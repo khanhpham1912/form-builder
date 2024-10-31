@@ -9,7 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Plus } from "lucide-react";
+import { Plus, FilePlus } from "lucide-react";
 // import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -27,6 +27,7 @@ import { toast } from "@/hooks/use-toast";
 import { createForm } from "@/actions/form";
 import { useForm } from "react-hook-form";
 import { useBoolean } from "usehooks-ts";
+import { Card, CardContent } from "@/components/ui/card";
 
 export const CreateForm = () => {
   const {
@@ -70,10 +71,12 @@ export const CreateForm = () => {
       }}
     >
       <DialogTrigger asChild>
-        <Button>
-          <Plus />
-          Create form
-        </Button>
+        <Card className="w-full h-[150px] cursor-pointer border-dashed">
+          <CardContent className="p-6 flex flex-col items-center justify-center gap-4 h-full text-neutral-500">
+            <FilePlus />
+            <span>Create new form</span>
+          </CardContent>
+        </Card>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
@@ -110,6 +113,7 @@ export const CreateForm = () => {
                       rows={5}
                       placeholder="Enter description"
                       {...field}
+                      value={field.value ?? ""}
                     />
                   </FormControl>
                   <FormMessage />
